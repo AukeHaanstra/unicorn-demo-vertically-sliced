@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: default-run
+
+    group:
+      main-includes:
+        - main
+        - modulith
+        - logging
+        - persistence
+
+      test-includes:
+        - test
+
+      default-run:
+        - console-presenter-components
+        - init-persistence
+        - no-console-logging
+
+      integration-test-run:
+        - test-includes
+        - init-persistence
+
+      module-integration-test-run:
+        - test-includes
+        - no-init-persistence
+        - in-memory-db-persistence
+
+    include: main-includes

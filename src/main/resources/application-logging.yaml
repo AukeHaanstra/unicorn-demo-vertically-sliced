@@ -1,0 +1,23 @@
+logging:
+  level:
+    com.tngtech.archunit: INFO
+
+server:
+  port: 8080
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: no-console-logging
+
+logging:
+  pattern:
+    console:
+  file:
+    name: unicorn-demo.log
+  logback:
+    rollingpolicy:
+      max-file-size: 100KB
+      clean-history-on-start: true

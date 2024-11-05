@@ -1,0 +1,5 @@
+spring:
+  modulith:
+    detection-strategy: explicitly-annotated
+    # Not actually functional since H2 gets re-initialized every time:
+    republish-outstanding-events-on-restart: true
