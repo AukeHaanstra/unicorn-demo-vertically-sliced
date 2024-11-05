@@ -10,13 +10,11 @@ import nl.pancompany.unicorn.common.model.UnicornId;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
 import org.jmolecules.ddd.annotation.ValueObject;
-import org.mapstruct.Mapper;
 
 import java.util.Set;
 
 import static java.util.Objects.requireNonNullElseGet;
-import static org.mapstruct.ReportingPolicy.ERROR;
-import static org.mapstruct.factory.Mappers.getMapper;
+import static java.util.stream.Collectors.toSet;
 
 @Getter
 @ToString
@@ -51,14 +49,9 @@ public class Unicorn {
     }
 
     public UnicornDto toDto() {
-        return UnicornDtoMapper.INSTANCE.map(this);
-    }
-
-    @Mapper(unmappedTargetPolicy = ERROR, uses = Leg.LegDtoMapper.class)
-    interface UnicornDtoMapper {
-        UnicornDtoMapper INSTANCE = getMapper(UnicornDtoMapper.class);
-
-        UnicornDto map(Unicorn unicorn);
+        return new UnicornDto(unicornId, name, legs.stream()
+                .map(Leg::toDto)
+                .collect(toSet()));
     }
 
     @ValueObject

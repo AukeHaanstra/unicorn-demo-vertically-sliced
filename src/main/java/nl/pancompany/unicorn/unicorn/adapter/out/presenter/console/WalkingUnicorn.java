@@ -1,10 +1,9 @@
 package nl.pancompany.unicorn.unicorn.adapter.out.presenter.console;
 
-import nl.pancompany.unicorn.common.Constants;
-import nl.pancompany.unicorn.common.model.UnicornId;
 import nl.pancompany.unicorn.common.events.MagicAbilityDto;
 import nl.pancompany.unicorn.common.events.MagicAbilityObtained;
 import nl.pancompany.unicorn.common.events.NewLegObtained;
+import nl.pancompany.unicorn.common.model.UnicornId;
 import nl.pancompany.unicorn.unicorn.application.domain.model.Leg;
 import nl.pancompany.unicorn.unicorn.application.domain.model.Unicorn;
 import nl.pancompany.unicorn.unicorn.application.port.in.GetUnicornUsecase;

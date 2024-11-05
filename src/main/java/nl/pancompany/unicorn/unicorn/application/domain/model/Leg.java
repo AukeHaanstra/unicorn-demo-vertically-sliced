@@ -3,14 +3,9 @@ package nl.pancompany.unicorn.unicorn.application.domain.model;
 import lombok.*;
 import nl.pancompany.unicorn.common.model.Color;
 import nl.pancompany.unicorn.common.model.LegPosition;
-import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Entity;
 import org.jmolecules.ddd.annotation.Identity;
 import org.jmolecules.ddd.annotation.ValueObject;
-import org.mapstruct.Mapper;
-
-import static org.mapstruct.ReportingPolicy.ERROR;
-import static org.mapstruct.factory.Mappers.getMapper;
 
 @Getter
 @ToString
@@ -28,17 +23,7 @@ public class Leg {
         private Color color;
 
         public LegDto toDto() {
-                return LegDtoMapper.INSTANCE.map(this);
-        }
-
-        @Mapper(unmappedTargetPolicy = ERROR)
-        interface LegDtoMapper {
-
-            LegDtoMapper INSTANCE = getMapper(LegDtoMapper.class);
-
-            LegDto map(Leg leg);
-
-            Leg map(LegDto legDto);
+                return new LegDto(legPosition, color);
         }
 
         @ValueObject
